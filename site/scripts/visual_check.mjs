@@ -1,5 +1,5 @@
 /**
- * Проверка живого сайта Refertur.net (homgorn.github.io/argymaq-seo-case) через Playwright:
+ * Проверка живого отчёта Refertur (homgorn.github.io/argymaq-seo-case) через Playwright:
  * консольные ошибки, размеры canvas, горизонтальный скролл, мобильная вёрстка.
  *
  * Запуск:  node scripts/visual_check.mjs
@@ -10,13 +10,11 @@ import { join } from 'path';
 
 const BASE = 'https://homgorn.github.io/argymaq-seo-case';
 const PAGES = [
-  { path: '/', name: 'home' },
-  { path: '/kase/argymaq-kg/', name: 'case' },
-  { path: '/kase/argymaq-kg/audit/', name: 'audit' },
-  { path: '/kase/argymaq-kg/result/', name: 'result' },
-  { path: '/ceny/', name: 'ceny' },
-  { path: '/kontakty/', name: 'kontakty' },
-  { path: '/uslugi/geo/', name: 'geo' },
+  { path: '/', name: 'index' },
+  { path: '/audit/', name: 'audit' },
+  { path: '/plan/', name: 'plan' },
+  { path: '/work/', name: 'work' },
+  { path: '/result/', name: 'result' },
 ];
 const OUT = 'H:/susa ai 500/argymaq.kg/work/shots';
 
@@ -47,18 +45,12 @@ for (const theme of [{ name: 'desktop', width: 1280, height: 800 },
       errors.push('goto: ' + e.message);
     }
 
-    // Горизонтальный скролл (ошибка вёрстки)
     const hscroll = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 2);
-
-    // H1
     const h1 = await page.locator('h1').count();
 
-    // Canvas внутри графиков (если есть)
     const canvas = await page.locator('canvas').evaluateAll((els) =>
       els.map((el) => ({ w: el.width, h: el.height, visible: el.offsetWidth > 0 }))
     );
-
-    // График нарисован? (canvas имеет ненулевой размер)
     for (const c of canvas) {
       if (c.visible && (c.w < 10 || c.h < 10)) errors.push('canvas has near-zero size');
     }
@@ -69,13 +61,12 @@ for (const theme of [{ name: 'desktop', width: 1280, height: 800 },
     const ok = status === 200 && h1 === 1 && errors.length === 0 && !hscroll;
     if (!ok) failed++;
     report.push({ theme: theme.name, path: p.path, status, h1, hscroll, errors, shot });
-    console.log(`${ok ? 'OK  ' : 'FAIL'} ${p.path.padEnd(28)} status=${status} h1=${h1} hscroll=${hscroll} errors=${errors.length}`);
+    console.log(`${ok ? 'OK  ' : 'FAIL'} ${p.path.padEnd(14)} status=${status} h1=${h1} hscroll=${hscroll} errors=${errors.length}`);
     if (errors.length) errors.forEach((e) => console.log('     - ' + e.slice(0, 160)));
     await page.close();
   }
 }
 
 await browser.close();
-console.log(`\n=== ИТОГ: ${OUT_SIZE()} снимков, неудачных проверок: ${failed} ===`);
-function OUT_SIZE() { return PAGES.length * 2; }
+console.log(`\n=== ИТОГ: ${PAGES.length * 2} проверок, неудачных: ${failed} ===`);
 process.exit(failed ? 1 : 0);

@@ -1,9 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import site from '../data/site.json';
 
-const title = 'Страница не найдена — Refertur.net';
-const description = 'Такой страницы нет. Вот главные разделы: кейс с аудитом argymaq.kg, услуги, цены и контакты.';
+const title = 'Страница не найдена — argymaq.kg аудит';
+const description =
+  'Такой страницы нет. Вот разделы отчёта: аудит, план работ, что сделано и цифры результата.';
 ---
 
 <Base title={title} description={description}>
@@ -14,24 +14,16 @@ const description = 'Такой страницы нет. Вот главные �
         Такой страницы нет
       </h1>
       <p class="mt-4 text-[16px] leading-relaxed" style="color: var(--color-muted);">
-        Возможно, вы перешли по ссылке со старого адреса. Вот что точно найдётся:
+        Возможно, вы перешли по ссылке со старого адреса.
+        Вот что точно найдётся:
       </p>
 
       <div class="mt-8 grid gap-2.5">
-        <a href="/" class="notfound-link">Главная</a>
-        <a href="/kase/argymaq-kg/" class="notfound-link">Кейс: аудит argymaq.kg</a>
-        <a href="/uslugi/" class="notfound-link">Услуги</a>
-        <a href="/ceny/" class="notfound-link">Цены</a>
-        <a href="/kontakty/" class="notfound-link">Контакты</a>
-      </div>
-
-      <div class="mt-8 flex flex-wrap justify-center gap-2.5">
-        <a href={site.contacts.whatsappLink} target="_blank" rel="noopener" class="btn btn-primary">
-          Написать в WhatsApp →
-        </a>
-        <a href={site.contacts.telegramLink} target="_blank" rel="noopener" class="btn">
-          Telegram @realhikaz
-        </a>
+        <a href="/" class="notfound-link">Оглавление отчёта</a>
+        <a href="/audit/" class="notfound-link">Аудит — что нашли</a>
+        <a href="/plan/" class="notfound-link">План работ</a>
+        <a href="/work/" class="notfound-link">Что сделали</a>
+        <a href="/result/" class="notfound-link">Результат — цифры</a>
       </div>
     </div>
   </section>
@@ -65,25 +57,4 @@ const description = 'Такой страницы нет. Вот главные �
     border-color: var(--color-fg);
     transform: translateY(-1px);
   }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 11px 20px;
-    border-radius: var(--radius-lg);
-    font-size: 14.5px;
-    font-weight: 500;
-    text-decoration: none;
-    border: 1px solid var(--color-line);
-    background: var(--color-bg);
-    color: var(--color-fg);
-    transition: all 0.16s ease;
-  }
-  .btn:hover { border-color: var(--color-muted); transform: translateY(-1px); }
-  .btn-primary {
-    background: var(--color-fg);
-    color: #fff;
-    border-color: var(--color-fg);
-  }
-  .btn-primary:hover { opacity: 0.88; }
 </style>

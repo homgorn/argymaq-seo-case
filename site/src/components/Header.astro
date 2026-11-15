@@ -1,68 +1,36 @@
 ---
-import site from '../data/site.json';
+import site from '../data/case/argymaq.json';
 
-const nav = site.nav;
+const nav = [
+  { label: 'Аудит', href: '/audit/' },
+  { label: 'План', href: '/plan/' },
+  { label: 'Что сделали', href: '/work/' },
+  { label: 'Результат', href: '/result/' },
+];
 ---
 
 <header
   class="sticky top-0 z-50 border-b backdrop-blur-xl"
   style="background: color-mix(in srgb, var(--color-bg) 84%, transparent); border-color: var(--color-line);"
 >
-  <div class="wrap flex h-[58px] items-center justify-between gap-5">
-    <a href="/" class="flex items-center gap-2 font-bold tracking-tight" style="font-size: 15px;">
+  <div class="wrap flex h-[54px] items-center justify-between gap-5">
+    <a href="/" class="flex items-center gap-3" aria-label="argymaq.kg — аудит, к оглавлению">
       <span
-        class="grid h-[22px] w-[22px] place-items-center rounded-md text-[11px] font-bold text-white"
-        style="background: var(--color-fg);"
-      >{site.brand.nameShort}</span>
-      <span class="hidden sm:inline">{site.brand.name}</span>
+        class="grid h-[22px] place-items-center rounded-md text-[11px] font-bold text-white"
+        style="background: var(--color-fg); padding-inline: 7px;"
+      >A</span>
+      <span class="text-[13px] font-semibold tracking-tight">
+        argymaq.kg
+        <span class="hidden text-[12px] font-normal sm:inline" style="color: var(--color-muted);"> — отчёт об аудите</span>
+      </span>
     </a>
 
-    <nav class="hidden items-center gap-6 text-sm md:flex" style="color: var(--color-muted);">
+    <nav class="flex items-center gap-4 text-[13px] sm:gap-6" style="color: var(--color-muted);">
       {nav.map((item) => (
-        <a
-          href={item.href}
-          class="transition-colors hover:text-[var(--color-fg)]"
-          style="text-decoration: none;"
-        >{item.label}</a>
+        <a href={item.href} class="transition-colors hover:text-[var(--color-fg)]" style="text-decoration:none;">
+          {item.label}
+        </a>
       ))}
     </nav>
-
-    <div class="flex items-center gap-2">
-      <a
-        href={site.contacts.whatsappLink}
-        target="_blank"
-        rel="noopener"
-        class="btn-ghost hidden sm:inline-flex"
-      >WhatsApp</a>
-      <a href="/kontakty/" class="btn-primary">Рассчитать</a>
-    </div>
   </div>
 </header>
-
-<style>
-  .btn-ghost,
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 8px 14px;
-    border-radius: var(--radius-lg);
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.16s ease;
-    border: 1px solid var(--color-line);
-    background: var(--color-bg);
-    color: var(--color-fg);
-  }
-  .btn-ghost:hover {
-    border-color: var(--color-muted);
-    transform: translateY(-1px);
-  }
-  .btn-primary {
-    background: var(--color-fg);
-    color: #fff;
-    border-color: var(--color-fg);
-  }
-  .btn-primary:hover { opacity: 0.88; }
-</style>
