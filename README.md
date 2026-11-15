@@ -1,113 +1,102 @@
-<!-- Language: English is the primary README. Translations follow. -->
-<div align="center">
+# argymaq.kg — аудит сайта и план внедрения
 
-**English** · [Русский](README.ru.md) · [Español](README.es.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [中文](README.zh.md) · [日本語](README.ja.md)
+**Static audit report for the [argymaq.kg](https://argymaq.kg) website** — a horseback tour operator in Karakol, Kyrgyzstan.
 
-</div>
+The case is presented as a standalone client-facing report, not as a portfolio piece:
+what was found, what each issue means for revenue, and in what order to fix.
 
----
+**Live report:** https://homgorn.github.io/argymaq-seo-case/
 
-# argymaq-seo-case
-**Full SEO audit of a Kyrgyz tourism website, packaged as a client-ready static report and a portfolio case study.**
+## What this repository is
 
-Live site: **https://homgorn.github.io/argymaq-seo-case/**
+- A reproducible SEO audit of `argymaq.kg` (measured 14–15 November 2026).
+- A static website presenting the audit: findings in plain language, a phased plan, and the measurements behind every claim.
+- The scripts and data required to re-run the audit.
 
-![Audit](https://img.shields.io/badge/audit-54%20issues-critical) ![Pages](https://img.shields.io/badge/pages-17%20built-success) ![Stack](https://img.shields.io/badge/Astro-5.18-ff5d01) ![License](https://img.shields.io/badge/license-MIT-blue)
+The site does not advertise any agency or sell anything. It documents one website, one audit.
 
----
+## The numbers that started it
 
-## What this is
-
-A complete, reproducible SEO audit of **argymaq.kg** — a horseback riding tour operator in Karakol, Kyrgyzstan — turned into two deliverables:
-
-1. **A client-facing static website** (Astro, 17 pages) that explains the findings in plain language, with charts, before/after comparisons, and a phased plan. Built for an owner who does not work in SEO.
-2. **A full audit dataset** — every measurement, script, and source, so the work can be re-run and verified.
-
-The case is presented as **before → after**: what was found, what it means for revenue, and what gets fixed first.
-
-### The numbers that started it
-
-| Metric | Before | Source |
+| Metric | Found | Source |
 |---|---|---|
 | Image weight on one tour page | **150.4 MB** | measured, HEAD requests on 54 files |
-| Median server response | **4.33 s** | measured, 5 runs |
+| Median server response time | **4.33 s** | measured, 5 runs |
 | Meta descriptions | **0 of 14 pages** | measured |
-| schema.org blocks | **0 across 15 URLs** | measured |
+| schema.org markup blocks | **0 across 15 URLs** | measured |
 | Analytics installed | **none** | measured |
 | Contact forms | **0** | measured |
+
+Deep-audit findings (infrastructure): the site exposes the administrator login (`ARGYMAQKG` via the REST API and `/?author=1`), the exact WordPress version (`7.1.4`) in the generator meta tag and RSS feed, and the login form at `/wp-login.php` without rate limiting. `xmlrpc.php` is correctly blocked.
 
 ## What is inside
 
 ```
-argymaq-seo-case/
-|-- site/                   the static report website (Astro 5 + Tailwind 4)
-|   |-- src/pages/          17 routes
-|   |-- src/components/     MetricCard, BeforeAfter, Phase, PriceCard, Steps
-|   |-- src/data/           services, packages, case data as JSON
-|   `-- dist/               built output (git-ignored)
-|-- docs/
-|   |-- architecture/       site architecture and design system
-|   |-- reports/            the audit report for the owner (RU + EN)
-|   |-- research/           market prices, reporting patterns, GEO, local maps
-|   `-- wiki/               multi-level LLM wiki of every finding
-|-- scripts/                11 Python scripts that reproduce the audit
-|-- research/               raw competitor data and benchmark
-`-- data/                   SQLite knowledge base + JSONL export
+argymaq.kg-audit/   This case only. Developer portfolio lives in homgorn/homgorn.github.io
+├── site/           Static report site (Astro 5 + Tailwind 4)      ← built to docs/, served by Pages
+├── docs/
+│   ├── reports/    Audit reports (RU, EN)
+│   ├── research/   Competitor benchmark, GEO, local maps, market prices
+│   ├── wiki/       LLM-readable wiki of the audit findings
+│   └── STATUS.md   Project status
+├── scripts/        11 Python scripts reproducing the audit
+├── research/       Raw competitor data
+└── data/           SQLite knowledge base + JSONL export
 ```
 
-## Quick start
+## Reading the report
+
+| Section | Route | What it answers |
+|---|---|---|
+| Contents | `/` | What was measured and how this report is built |
+| Audit | `/audit/` | What was found, severity by severity |
+| Plan | `/plan/` | What to fix first, in four priority bands |
+| Work | `/work/` | What has been done so far |
+| Results | `/result/` | The before-figures, measured |
+
+## Source marks in the docs
+
+| Mark | Meaning |
+|---|---|
+| **[measured]** | verified by direct request; reproducible |
+| **[reported]** | taken from an external source with URL and date |
+| **[inferred]** | logical conclusion, not a direct measurement |
+| **[panel]** | requires panel access the audit did not have |
+
+No figure is invented. Where data was unavailable, the gap is stated, not filled.
+
+## Re-run the audit
 
 ```bash
-git clone https://github.com/homgorn/argymaq-seo-case.git
-cd argymaq-seo-case/site
+cd site
 npm install
-npm run dev        # local preview
-npm run build      # production build into dist/
-npm run check      # TypeScript and Astro checks
-```
+npm run build            # build the report into dist/, served from docs/
+npm run check            # type check
 
-Re-run the audit:
-
-```bash
+cd ..
 python scripts/crawl_full.py
 python scripts/site_checks.py
 python scripts/images_head.py
 python scripts/competitors.py
 python scripts/benchmark.py
 python scripts/build_kb.py
-python scripts/verify_site.py
 ```
 
 ## Documentation
 
 | Document | What it covers |
 |---|---|
-| [Architecture](docs/architecture/00-architecture.md) | 17-page sitemap, design system, data model |
-| [Skill plan](docs/architecture/01-skill-plan.md) | which specialists apply at which stage |
-| [Audit report (RU)](docs/reports/seo-audit-2026-11-15.md) | the full report delivered to the client |
-| [Audit report (EN)](docs/reports/seo-audit-2026-11-15.en.md) | English edition of the same report |
-| [Prices, Kyrgyzstan](docs/research/market-prices-kr/00-prices.md) | market rates in som, with sources and dates |
-| [Client reporting](docs/research/client-reporting/00-reporting.md) | how agencies present reports that get read |
-| [GEO / AI search](docs/research/geo-ai-search/00-geo.md) | measuring visibility in ChatGPT, Perplexity, Google AI |
+| [Audit report (RU)](docs/reports/seo-audit-2026-11-15.md) | The report delivered to the client |
+| [Audit report (EN)](docs/reports/seo-audit-2026-11-15.en.md) | Same report in English |
+| [Architecture](docs/architecture/00-architecture.md) | Original design system and sitemap (historical) |
+| [Prices, Kyrgyzstan](docs/research/market-prices-kr/00-prices.md) | Market rates in som, with sources and dates |
+| [Reporting patterns](docs/research/client-reporting/00-reporting.md) | How agencies present reports that clients read |
+| [GEO / AI search](docs/research/geo-ai-search/00-geo.md) | Measuring visibility in ChatGPT / Perplexity / Google AI |
 | [Local maps](docs/research/local-maps/00-maps.md) | Yandex Maps, 2GIS, Google Business Profile |
-| [Case study structure](docs/research/case-studies/00-case-study.md) | what makes a portfolio convert |
-| [LLM wiki index](docs/wiki/40-index-portfolio.md) | every document, cross-linked |
-
-## Reading the source labels
-
-Every claim in the docs carries a mark:
-
-| Mark | Meaning |
-|---|---|
-| **[measured]** | verified by a direct request; the figure is reproducible |
-| **[reported]** | taken from an external source with URL and date |
-| **[inferred]** | a logical conclusion, not a direct measurement |
-| **[panel]** | requires access the audit did not have |
-
-No figure is invented. Where data was unavailable, the gap is stated rather than filled.
+| [LLM wiki index](docs/wiki/40-index-portfolio.md) | Every document, cross-linked |
+| [Status](docs/STATUS.md) | What is done and what is not |
 
 ## License
 
-MIT — see [LICENSE](LICENSE). The audit data and reports are provided as-is, for reference.
+MIT — see [LICENSE.txt](LICENSE.txt). The audit findings are reproducible and provided as-is.
 
-The `argymaq.kg` site and brand belong to their owner. This repository contains measurements and recommendations, not their content.
+`argymaq.kg` and its content belong to their owner. This repository contains measurements and recommendations about one website, not its content.

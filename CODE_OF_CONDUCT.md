@@ -2,43 +2,29 @@
 
 ## Our pledge
 
-We pledge to make participation in this project a harassment-free experience for
-everyone, regardless of age, body size, disability, ethnicity, gender identity
-and expression, level of experience, nationality, personal appearance, race,
-religion, or sexual identity and orientation.
+We make participation in this project a respectful, harassment-free experience
+for everyone.
 
-## Our standards
+## Standards
 
-**Behaviour that helps:**
+**Behaviour that helps:** using inclusive language, being courteous, accepting
+constructive criticism, focusing on what is best for the project and its
+readers, showing empathy.
 
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Accepting constructive criticism gracefully
-- Focusing on what is best for the project and its readers
-- Showing empathy toward others
-
-**Behaviour that is not acceptable:**
-
-- Sexualised language or imagery, and unwelcome sexual attention
-- Trolling, insulting or derogatory comments, personal or political attacks
-- Public or private harassment
-- Publishing others' private information without explicit permission
-- Any conduct which could reasonably be considered inappropriate in a
-  professional setting
+**Behaviour that is not acceptable:** personal attacks, public or private
+harassment, sexualised language or imagery, publishing others' private
+information, or conduct that would reasonably be considered inappropriate in a
+professional setting.
 
 ## Scope
 
-Applies in all project spaces — issues, pull requests, discussions — and when
-an individual represents the project in public.
+All project spaces — issues, pull requests, discussions — and when an individual
+represents the project in public.
 
 ## Enforcement
 
-Report unacceptable behaviour to:
-
-- Email: refertur@yandex.ru
-- Telegram: @realhikaz
-
-All complaints will be reviewed and investigated promptly and fairly. The
+Report unacceptable behaviour through the maintainer's private channels rather
+than in public issues. All complaints are reviewed promptly and fairly. The
 maintainer is obligated to respect the privacy and security of the reporter.
 
 Consequences may include a warning, a temporary ban, or a permanent ban, at the
