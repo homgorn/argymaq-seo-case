@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://homgorn.github.io/argymaq-seo-case/sitemap-index.xml
