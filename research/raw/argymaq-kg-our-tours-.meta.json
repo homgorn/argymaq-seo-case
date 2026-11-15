@@ -1,0 +1,271 @@
+{
+ "url": "https://argymaq.kg/our-tours/",
+ "final_url": "https://argymaq.kg/our-tours/",
+ "status": 200,
+ "elapsed": 5.531,
+ "ttfb": 5.531,
+ "html_bytes": 102619,
+ "text_len": 684,
+ "lang": "ru-RU",
+ "title": "Our tours — ARGYMAQ KYRGYZSTAN",
+ "title_len": 30,
+ "meta_description": "",
+ "meta_keywords": "",
+ "meta_robots": "",
+ "canonical": "https://argymaq.kg/our-tours/",
+ "hreflang": [],
+ "og": {},
+ "twitter": {},
+ "viewport": "",
+ "h1": [
+  "Our tours"
+ ],
+ "h2": [
+  "Adventures that become memories"
+ ],
+ "h3": [],
+ "h1_count": 1,
+ "img_total": 6,
+ "img_no_alt": 6,
+ "img_no_dims": 1,
+ "img_lazy": 2,
+ "ldjson_types": [],
+ "ldjson_count": 0,
+ "ldjson_broken": 0,
+ "internal_links": 18,
+ "internal_unique": 12,
+ "external_links": [
+  "https://api.whatsapp.com/send?phone=+996501282030&text=Hi!%20put%20your%20message%20here",
+  "https://facebook.com",
+  "https://instagram.com",
+  "https://linkedin.com",
+  "https://wa.me/996501282030"
+ ],
+ "nofollow": 0,
+ "scripts": 11,
+ "styles": 25,
+ "inline_style_bytes": 68059,
+ "iframes": 0,
+ "forms": 0,
+ "inputs": 0,
+ "videos": 0,
+ "tables": 0,
+ "words_total": 78,
+ "top_words": [
+  [
+   "horseback",
+   5
+  ],
+  [
+   "kyrgyzstan",
+   4
+  ],
+  [
+   "riding",
+   4
+  ],
+  [
+   "tour",
+   4
+  ],
+  [
+   "tours",
+   3
+  ],
+  [
+   "argymaq",
+   3
+  ],
+  [
+   "adventures",
+   2
+  ],
+  [
+   "altyn",
+   2
+  ],
+  [
+   "arashan",
+   2
+  ],
+  [
+   "lesnoye",
+   2
+  ],
+  [
+   "program",
+   2
+  ],
+  [
+   "перейти",
+   1
+  ],
+  [
+   "содержимому",
+   1
+  ],
+  [
+   "home",
+   1
+  ],
+  [
+   "about",
+   1
+  ],
+  [
+   "airport",
+   1
+  ],
+  [
+   "pickup",
+   1
+  ],
+  [
+   "guest",
+   1
+  ],
+  [
+   "house",
+   1
+  ],
+  [
+   "contact",
+   1
+  ]
+ ],
+ "counters": {
+  "metrika": false,
+  "gtm_ga": false,
+  "fb_pixel": false,
+  "clarity": false,
+  "hotjar": false
+ },
+ "head_links": [
+  {
+   "rel": "modulepreload",
+   "href": "https://argymaq.kg/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=6a43cba92ed701f32cd9",
+   "type": ""
+  },
+  {
+   "href": "#wp--skip-link--target",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg",
+   "rel": "home",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/about-us/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/our-tours/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/airport-pickup/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/guesthouse-and-yurt-camp/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://wa.me/996501282030",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/1-day-horseback-riding-tour-in-karakol-gorge/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/1-day-horseback-riding-tour-in-karakol-gorge/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/2-day-horseback-riding-itinerary-altyn-arashan/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/2-day-horseback-riding-itinerary-altyn-arashan/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/blog/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/blog/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/4-day-horseback-riding-tour-program/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/4-day-horseback-riding-tour-program/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/5-day-horseback-riding-tour-program/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg/5-day-horseback-riding-tour-program/",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://argymaq.kg",
+   "rel": "home",
+   "text": ""
+  },
+  {
+   "href": "https://linkedin.com",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://facebook.com",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://instagram.com",
+   "rel": "",
+   "text": ""
+  },
+  {
+   "href": "https://api.whatsapp.com/send?phone=+996501282030&text=Hi!%20put%20your%20message%20here",
+   "rel": "noopener noreferrer",
+   "text": ""
+  }
+ ],
+ "headers": {
+  "Server": "nginx/1.30.6",
+  "Content-Type": "text/html; charset=UTF-8",
+  "X-Powered-By": "PHP/8.4.27",
+  "Link": "<https://argymaq.kg/wp-json/>; rel=\"https://api.w.org/\", <https://argymaq.kg/wp-json/wp/v2/pages/361>; rel=\"alternate\"; title=\"JSON\"; type=\"application/json\", <https://argymaq.kg/?p=361>; rel=shortlink"
+ }
+}

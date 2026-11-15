@@ -1,0 +1,314 @@
+---
+import Base from '../../../layouts/Base.astro';
+import MetricCard from '../../../components/MetricCard.astro';
+import caseData from '../../../data/case/argymaq.json';
+
+const title = 'Результат по argymaq.kg — цифры';
+const description =
+  'Что было и что стало после внедрения: вес страницы, скорость, мета-теги, разметка, аналитика. Каждая цифра — замер.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  about: { '@type': 'Organization', name: caseData.client, url: caseData.clientUrl },
+};
+
+// Данные для графиков
+const ttfbRuns = [3.063, 5.328, 4.328, 5.25, 2.313];
+const avg = (a: number[]) => a.reduce((x, y) => x + y, 0) / a.length;
+const median = (a: number[]) => {
+  const s = [...a].sort((x, y) => x - y);
+  return s[Math.floor(s.length / 2)];
+};
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <section class="wrap py-14 md:py-20">
+    <div class="mx-auto max-w-[880px]">
+      <nav class="text-[13px] mb-5" style="color: var(--color-muted);" aria-label="Хлебные крошки">
+        <a href="/" style="text-decoration:none;">Главная</a>
+        <span class="mx-1.5">/</span>
+        <a href="/kase/argymaq-kg/" style="text-decoration:none;">Кейс</a>
+        <span class="mx-1.5">/</span>
+        <span>Результат</span>
+      </nav>
+
+      <h1 class="text-[clamp(26px,4vw,38px)] font-[650] leading-[1.14] tracking-[-0.03em]">
+        Результат: <span class="grad">цифры, а не слова</span>
+      </h1>
+      <p class="mt-4 text-[16.5px] leading-relaxed" style="color: var(--color-muted);">
+        Каждая цифра ниже — замер, а не оценка. «Было» получено до начала работ.
+        «Стало» появится после внедрения — мы не подменяем его целью.
+      </p>
+
+      <div class="callout mt-6">
+        <strong>Честно:</strong> сейчас закрыт P0 (критичные правки).
+        P1 и P2 в работе. Поэтому значения «стало» пока не подставлены —
+        это была бы выдумка, а не измерение.
+      </div>
+
+      <!-- Метрики -->
+      <div class="mt-9 grid gap-3 sm:grid-cols-2">
+        {caseData.metrics.map((m) => (
+          <MetricCard
+            label={m.label}
+            explain={m.explain}
+            before={m.before}
+            beforeUnit={m.beforeUnit}
+            after={m.after}
+            afterUnit={m.afterUnit}
+            target={m.target}
+            targetUnit={m.targetUnit}
+            status={m.status as 'pending' | 'done' | 'planned'}
+          />
+        ))}
+      </div>
+
+      <!-- График TTFB -->
+      <h2 class="mt-12 text-[21px] font-[640] tracking-[-0.02em]">
+        Скорость ответа: 5 замеров
+      </h2>
+      <p class="mt-2 text-[14px] leading-relaxed" style="color: var(--color-muted);">
+        Пять запросов к главной странице подряд. Разброс большой — сервер отвечает
+        нестабильно. Медиана {median(ttfbRuns).toFixed(2)} с, среднее {avg(ttfbRuns).toFixed(2)} с.
+        Норма — до 1 секунды.
+      </p>
+
+      <div class="chart-box mt-4">
+        <canvas id="ttfb" aria-label="График времени ответа сервера, 5 замеров" role="img"></canvas>
+      </div>
+
+      <!-- График веса изображений -->
+      <h2 class="mt-12 text-[21px] font-[640] tracking-[-0.02em]">
+        Вес изображений по страницам
+      </h2>
+      <p class="mt-2 text-[14px] leading-relaxed" style="color: var(--color-muted);">
+        Сколько нужно скачать картинок, чтобы открылась страница.
+        Норма — до 2 МБ. У argymaq.kg — до 150 МБ.
+      </p>
+
+      <div class="chart-box mt-4">
+        <canvas id="weight" aria-label="Горизонтальные столбцы: вес изображений по страницам" role="img"></canvas>
+      </div>
+
+      <!-- Таблица по страницам -->
+      <h2 class="mt-12 text-[21px] font-[640] tracking-[-0.02em]">По страницам</h2>
+      <div class="tbl-wrap mt-4">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th scope="col">Страница</th>
+              <th scope="col" class="num">Слов</th>
+              <th scope="col" class="num">Картинок</th>
+              <th scope="col" class="num">Без alt</th>
+              <th scope="col" class="num">Отклик, с</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['/', 343, 21, 21, 5.3],
+              ['/our-tours/', 78, 6, 6, 5.5],
+              ['/1-day-…-gorge/', 85, 13, 13, 5.7],
+              ['/2-day-…-arashan/', 143, 4, 4, 4.4],
+              ['/4-day-…-program/', 152, 8, 8, 3.5],
+              ['/5-day-…-program/', 105, 17, 17, 6.2],
+              ['/guesthouse-…-camp/', 112, 1, 1, 4.3],
+              ['/airport-pickup/', 96, 1, 1, 2.8],
+              ['/about-us/', 153, 1, 1, 5.2],
+              ['/blog/', 166, 11, 11, 2.5],
+            ].map((row) => (
+              <tr>
+                <td class="mono">{row[0]}</td>
+                <td class="num">{row[1]}</td>
+                <td class="num">{row[2]}</td>
+                <td class="num" style={row[3] === row[2] ? 'color: var(--color-bad);' : ''}>{row[3]}</td>
+                <td class="num">{row[4]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-2 text-[12.5px]" style="color: var(--color-muted);">
+        «Без alt» = сколько изображений на странице без описания.
+      </p>
+
+      <div class="mt-11 flex flex-wrap gap-2.5">
+        <a href="/kontakty/" class="btn btn-primary">Хочу так же →</a>
+        <a href="/kase/argymaq-kg/audit/" class="btn">Что нашли</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  const gridColor = '#e4e4e7';
+  const textColor = '#71717a';
+
+  Chart.defaults.font.family =
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+  Chart.defaults.color = textColor;
+
+  const ttfbEl = document.getElementById('ttfb') as HTMLCanvasElement | null;
+  if (ttfbEl) {
+    new Chart(ttfbEl, {
+      type: 'bar',
+      data: {
+        labels: ['Замер 1', 'Замер 2', 'Замер 3', 'Замер 4', 'Замер 5'],
+        datasets: [
+          {
+            label: 'Секунд',
+            data: [3.063, 5.328, 4.328, 5.25, 2.313],
+            backgroundColor: '#dc2626',
+            borderRadius: 4,
+            maxBarThickness: 48,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: (c: any) => `${c.parsed.y} с` },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: gridColor },
+            title: { display: true, text: 'секунд' },
+          },
+          x: { grid: { display: false } },
+        },
+      },
+    });
+  }
+
+  const weightEl = document.getElementById('weight') as HTMLCanvasElement | null;
+  if (weightEl) {
+    new Chart(weightEl, {
+      type: 'bar',
+      data: {
+        labels: [
+          '5-дневный тур',
+          'Блог',
+          '1-дневный тур',
+          '4-дневный тур',
+          'Главная',
+          'Наши туры',
+          '2-дневный тур',
+        ],
+        datasets: [
+          {
+            label: 'МБ',
+            data: [150.4, 114.3, 102.1, 79.4, 75.4, 51.0, 36.9],
+            backgroundColor: ['#dc2626', '#dc2626', '#dc2626', '#ea580c', '#ea580c', '#d97706', '#d97706'],
+            borderRadius: 4,
+          },
+        ],
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: (c: any) => `${c.parsed.x} МБ` },
+          },
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            grid: { color: gridColor },
+            title: { display: true, text: 'мегабайт' },
+          },
+          y: { grid: { display: false } },
+        },
+      },
+    });
+  }
+</script>
+
+<style>
+  .callout {
+    border-left: 3px solid var(--color-warn);
+    background: color-mix(in srgb, var(--color-warn) 6%, var(--color-bg));
+    padding: 14px 18px;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .chart-box {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: 18px 16px 10px;
+    background: var(--color-bg);
+    height: 280px;
+    position: relative;
+  }
+  .tbl-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+  }
+  .tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    min-width: 520px;
+  }
+  .tbl th {
+    text-align: left;
+    padding: 11px 14px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 650;
+    color: var(--color-muted);
+    border-bottom: 1px solid var(--color-line);
+    background: var(--color-card);
+    white-space: nowrap;
+  }
+  .tbl td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .tbl tbody tr:last-child td { border-bottom: 0; }
+  .tbl tbody tr:hover { background: var(--color-card); }
+  .tbl .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .tbl .mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12.5px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 20px;
+    border-radius: var(--radius-lg);
+    font-size: 14.5px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    transition: all 0.16s ease;
+  }
+  .btn:hover { border-color: var(--color-muted); transform: translateY(-1px); }
+  .btn-primary {
+    background: var(--color-fg);
+    color: #fff;
+    border-color: var(--color-fg);
+  }
+  .btn-primary:hover { opacity: 0.88; }
+</style>

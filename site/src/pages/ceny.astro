@@ -1,0 +1,198 @@
+---
+import Base from '../layouts/Base.astro';
+import PriceCard from '../components/PriceCard.astro';
+import faq from '../data/faq.json';
+import packages from '../data/packages.json';
+import site from '../data/site.json';
+
+const title = 'Цены — Digital Growth KG';
+const description =
+  'Пакеты продвижения в сомах: Старт 29 000, Рост 59 000, Максимум 99 000 в месяц. Фиксированные цены, без «звоните — договоримся».';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Пакеты продвижения',
+  itemListElement: packages.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Offer',
+      name: `Пакет «${p.name}»`,
+      description: p.tagline,
+      price: p.price,
+      priceCurrency: 'KGS',
+      availability: 'https://schema.org/InStock',
+    },
+  })),
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Base title={title} description={description} jsonLd={[jsonLd, faqLd]}>
+  <section class="wrap py-14 md:py-20">
+    <div class="mx-auto max-w-[900px]">
+      <div class="sec-h">Цены</div>
+      <h1 class="text-[clamp(28px,4.4vw,42px)] font-[650] leading-[1.1] tracking-[-0.03em]">
+        Понятные пакеты <span class="grad">в сомах</span>
+      </h1>
+      <p class="mt-4 max-w-[560px] text-[16px] leading-relaxed" style="color: var(--color-muted);">
+        Три уровня. Выбираете по задаче и бюджету. Рекламный бюджет — отдельно,
+        напрямую площадке: вы видите каждую трату.
+      </p>
+
+      <div class="mt-10 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+        {packages.map((p) => (
+          <PriceCard
+            name={p.name}
+            price={p.price}
+            period={p.period}
+            tagline={p.tagline}
+            forWhom={p.forWhom}
+            highlight={p.highlight}
+            highlightLabel={p.highlightLabel}
+            features={p.features}
+            note={p.note}
+            ctaLabel="Выбрать"
+          />
+        ))}
+      </div>
+
+      <p class="mt-5 text-[13px] leading-relaxed" style="color: var(--color-muted);">
+        Цены указаны для одного сайта. Для нескольких точек или интернет-магазина —
+        считаем индивидуально. Минимальный срок работы — 3 месяца.
+      </p>
+
+      <!-- FAQ -->
+      <div class="mt-14">
+        <div class="sec-h">Частые вопросы</div>
+        <h2 class="text-[clamp(21px,2.8vw,28px)] font-[640] tracking-[-0.025em]">
+          Отвечаем заранее
+        </h2>
+
+        <div class="mt-6 divide-y" style="border-color: var(--color-line);">
+          {faq.map((f, i) => (
+            <details class="faq-item" open={i === 0}>
+              <summary class="faq-q">
+                <span>{f.q}</span>
+                <span class="faq-plus" aria-hidden="true"></span>
+              </summary>
+              <p class="faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <div class="band mt-12">
+        <h2>Не нашли свой случай?</h2>
+        <p>Напишите — посчитаем под вашу задачу. Первый аудит бесплатно.</p>
+        <div class="flex flex-wrap justify-center gap-2.5">
+          <a href={site.contacts.whatsappLink} target="_blank" rel="noopener" class="btn btn-primary">
+            WhatsApp →
+          </a>
+          <a href="/kontakty/" class="btn">Все контакты</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .sec-h {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    color: var(--color-muted);
+    font-weight: 650;
+    margin-bottom: 12px;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--color-line);
+    padding: 2px 0;
+  }
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 15px 0;
+    cursor: pointer;
+    font-size: 14.5px;
+    font-weight: 500;
+    list-style: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-plus {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    position: relative;
+  }
+  .faq-plus::before,
+  .faq-plus::after {
+    content: '';
+    position: absolute;
+    background: var(--color-muted);
+    border-radius: 2px;
+    transition: transform 0.16s ease;
+  }
+  .faq-plus::before { top: 8px; left: 2px; width: 14px; height: 2px; }
+  .faq-plus::after  { top: 2px; left: 8px; width: 2px; height: 14px; }
+  details[open] .faq-plus::after { transform: rotate(90deg); opacity: 0; }
+  .faq-a {
+    margin: 0 0 16px;
+    padding-right: 32px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+  .band {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl);
+    padding: 32px 28px;
+    background: linear-gradient(135deg, var(--color-card), var(--color-bg));
+    text-align: center;
+  }
+  .band h2 {
+    font-size: clamp(19px, 2.6vw, 24px);
+    letter-spacing: -0.022em;
+    margin: 0 0 8px;
+    font-weight: 640;
+  }
+  .band p {
+    color: var(--color-muted);
+    margin: 0 auto 20px;
+    max-width: 420px;
+    font-size: 14.5px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 20px;
+    border-radius: var(--radius-lg);
+    font-size: 14.5px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    transition: all 0.16s ease;
+  }
+  .btn:hover { border-color: var(--color-muted); transform: translateY(-1px); }
+  .btn-primary {
+    background: var(--color-fg);
+    color: #fff;
+    border-color: var(--color-fg);
+  }
+  .btn-primary:hover { opacity: 0.88; }
+</style>

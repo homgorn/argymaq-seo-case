@@ -1,0 +1,446 @@
+---
+import Base from '../layouts/Base.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import PriceCard from '../components/PriceCard.astro';
+import MetricCard from '../components/MetricCard.astro';
+import Phase from '../components/Phase.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import Steps from '../components/Steps.astro';
+
+import site from '../data/site.json';
+import services from '../data/services.json';
+import packages from '../data/packages.json';
+import process from '../data/process.json';
+import caseData from '../data/case/argymaq.json';
+
+const title = 'Продвижение для бизнеса в Кыргызстане — Digital Growth KG';
+const description =
+  'SEO, реклама, карты и сайт под ключ для бизнеса в Кыргызстане. Показываем не «мы поработали», а сколько было и сколько стало. Кейс argymaq.kg.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${site.brand.url}/#org`,
+      name: site.brand.name,
+      url: site.brand.url,
+      description: site.brand.description,
+      email: site.contacts.email,
+      telephone: site.contacts.whatsapp,
+      areaServed: 'KG',
+      sameAs: [site.contacts.whatsappLink, site.contacts.telegramLink],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site.brand.url}/#site`,
+      url: site.brand.url,
+      name: site.brand.name,
+      inLanguage: 'ru',
+      publisher: { '@id': `${site.brand.url}/#org` },
+    },
+  ],
+};
+
+// Метрики для верхней полосы
+const heroMetrics = caseData.metrics.slice(0, 5);
+
+// Блок «было/стало» — только те, где есть значение «после»
+const measured = caseData.metrics.filter((m) => m.after !== null);
+const baBefore = measured.map((m) => ({ label: m.label, value: `${m.before} ${m.beforeUnit}` }));
+const baAfter = measured.map((m) => ({ label: m.label, value: `${m.after} ${m.afterUnit}` }));
+
+// Фазы кейса
+const phases = caseData.phases;
+
+// Топ-3 кейса по приоритету
+const critical = (await import('../data/case/audit.json')).default
+  .filter((i) => i.severity === 'critical')
+  .slice(0, 3);
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <!-- HERO -->
+  <section class="wrap pt-14 pb-12 text-center md:pt-20 md:pb-16">
+    <div class="rise d1 pill">
+      <span class="pulse" aria-hidden="true"></span>
+      Работаем по всему Кыргызстану
+    </div>
+
+    <h1 class="rise d2 mx-auto max-w-[820px] text-[clamp(30px,5.2vw,50px)] font-[650] leading-[1.08] tracking-[-0.035em]">
+      Приводим клиентов из поиска, соцсетей и нейросетей — <span class="grad">с понятными цифрами</span>
+    </h1>
+
+    <p class="rise d3 mx-auto mt-5 max-w-[610px] text-[clamp(15px,1.9vw,17.5px)] leading-relaxed" style="color: var(--color-muted);">
+      SEO, реклама, карты и сайт под ключ. Показываем не «мы поработали»,
+      а сколько было и сколько стало.
+    </p>
+
+    <div class="rise d4 mt-8 flex flex-wrap justify-center gap-2.5">
+      <a href="/kase/argymaq-kg/" class="btn btn-primary">Смотреть кейс →</a>
+      <a href="/kontakty/" class="btn">Рассчитать стоимость</a>
+    </div>
+
+    <!-- Метрики -->
+    <div class="strip rise d4">
+      {heroMetrics.map((m) => (
+        <div class="cell">
+          <div class="n tnum">
+            {m.before}{m.beforeUnit ? ` ${m.beforeUnit}` : ''}
+            <span class="arrow">→</span>
+            {m.target ?? '—'}{m.targetUnit ? ` ${m.targetUnit}` : ''}
+          </div>
+          <div class="l">{m.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ПРОБЛЕМА -->
+  <section class="wrap py-14 md:py-16">
+    <div class="grid gap-10 md:grid-cols-[1fr_1.1fr] md:items-center">
+      <div>
+        <div class="sec-h">С чего начинаем</div>
+        <h2 class="sec-t">Сначала разбираемся, что мешает</h2>
+        <p class="sec-s">
+          Прежде чем что-то обещать, мы проверяем сайт по 60 параметрам.
+          Показываем, что нашли, что это значит для ваших денег и в каком порядке исправлять.
+        </p>
+        <a href="/kak-rabotaem/" class="link-arrow">Как мы работаем →</a>
+      </div>
+
+      <div class="grid gap-2.5">
+        {critical.map((item) => (
+          <div class="prob reveal">
+            <div class="flex items-start gap-3">
+              <span class="prob-badge">нашли</span>
+              <div>
+                <div class="prob-title">{item.title}</div>
+                <p class="prob-text">{item.plain}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- КЕЙС -->
+  <section class="wrap py-14 md:py-16">
+    <div class="sec-h">Кейс №1</div>
+    <h2 class="sec-t">{caseData.client} — {caseData.niche.toLowerCase()}, {caseData.region.split(',')[0]}</h2>
+    <p class="sec-s">{caseData.summary}</p>
+
+    <div class="case reveal">
+      <div class="case-top">
+        <div>
+          <h3 class="case-title">От «визитки без цен» до системы, которая приводит заявки</h3>
+          <p class="case-d">
+            {caseData.niche} · {caseData.region} · {caseData.pagesCount} страниц · {caseData.duration}
+          </p>
+        </div>
+        <span class="case-badge">{caseData.statusLabel}</span>
+      </div>
+      <div class="case-body">
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {phases.map((ph) => (
+            <Phase
+              n={ph.id}
+              title={ph.name}
+              text={ph.text}
+              result={ph.result}
+              status={ph.status === 'done' ? 'done' : ph.status === 'waiting' ? 'waiting' : 'current'}
+            />
+          ))}
+        </div>
+
+        <div class="mt-7">
+          <BeforeAfter before={baBefore} after={baAfter} />
+        </div>
+
+        <div class="mt-7 flex flex-wrap gap-2.5">
+          <a href="/kase/argymaq-kg/" class="btn btn-primary">Весь кейс →</a>
+          <a href="/kase/argymaq-kg/audit/" class="btn">Что нашли</a>
+          <a href="/kase/argymaq-kg/result/" class="btn">Цифры</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- УСЛУГИ -->
+  <section class="wrap py-14 md:py-16">
+    <div class="sec-h">Услуги</div>
+    <h2 class="sec-t">Что мы делаем</h2>
+    <p class="sec-s">Шесть направлений. Можно взять одно, можно всё сразу.</p>
+
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((s) => (
+        <ServiceCard
+          icon={s.icon}
+          title={s.title}
+          lead={s.lead}
+          outcome={s.outcome}
+          priceFrom={s.priceFrom}
+          priceUnit={s.priceUnit}
+          href={`/uslugi/${s.slug}/`}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- КАК РАБОТАЕМ -->
+  <section class="wrap py-14 md:py-16">
+    <div class="sec-h">Процесс</div>
+    <h2 class="sec-t">Как мы работаем</h2>
+    <p class="sec-s">Пять шагов. Вы всегда знаете, что происходит и что дальше.</p>
+
+    <Steps
+      items={process.map((p) => ({
+        title: p.title,
+        markdown: p.text,
+        status: 'current' as const,
+      }))}
+      direction="column"
+    />
+  </section>
+
+  <!-- ЦЕНЫ -->
+  <section class="wrap py-14 md:py-16">
+    <div class="sec-h">Цены</div>
+    <h2 class="sec-t">Пакеты</h2>
+    <p class="sec-s">Цены фиксированные, в сомах. Без «звоните — договоримся».</p>
+
+    <div class="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+      {packages.map((p) => (
+        <PriceCard
+          name={p.name}
+          price={p.price}
+          period={p.period}
+          tagline={p.tagline}
+          forWhom={p.forWhom}
+          highlight={p.highlight}
+          highlightLabel={p.highlightLabel}
+          features={p.features}
+          note={p.note}
+          ctaLabel="Выбрать"
+        />
+      ))}
+    </div>
+
+    <p class="mt-5 text-[13px] leading-relaxed" style="color: var(--color-muted);">
+      Рекламный бюджет оплачивается отдельно, напрямую площадке — вы видите все траты.
+      Минимальный срок работы — 3 месяца: столько нужно поисковикам, чтобы заметить изменения.
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="wrap pb-16">
+    <div class="band reveal">
+      <h2>Покажем, что происходит с вашим сайтом</h2>
+      <p>
+        Бесплатный экспресс-аудит: 3 главные проблемы, которые мешают получать заявки.
+        Без воды, за 24 часа.
+      </p>
+      <div class="flex flex-wrap justify-center gap-2.5">
+        <a href={site.contacts.whatsappLink} target="_blank" rel="noopener" class="btn btn-primary">
+          Написать в WhatsApp →
+        </a>
+        <a href="/kontakty/" class="btn">Заполнить бриф</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* pill */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 12px;
+    border: 1px solid var(--color-line);
+    border-radius: 99px;
+    font-size: 12.5px;
+    color: var(--color-muted);
+    background: var(--color-card);
+    margin-bottom: 22px;
+  }
+  .pulse {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--color-ok);
+    display: block;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-ok) 55%, transparent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-ok) 45%, transparent); }
+    70%  { box-shadow: 0 0 0 7px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  /* buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 20px;
+    border-radius: var(--radius-lg);
+    font-size: 14.5px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    transition: all 0.16s ease;
+  }
+  .btn:hover { border-color: var(--color-muted); transform: translateY(-1px); }
+  .btn-primary {
+    background: var(--color-fg);
+    color: #fff;
+    border-color: var(--color-fg);
+  }
+  .btn-primary:hover { opacity: 0.88; }
+
+  /* strip */
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px;
+    background: var(--color-line);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    margin-top: 48px;
+  }
+  .cell { background: var(--color-bg); padding: 20px 16px; text-align: left; }
+  .cell .n {
+    font-size: 20px;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .cell .arrow { color: var(--color-muted); margin: 0 3px; font-size: 15px; }
+  .cell .l {
+    font-size: 12.5px;
+    color: var(--color-muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* section headings */
+  .sec-h {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    color: var(--color-muted);
+    font-weight: 650;
+    margin-bottom: 12px;
+  }
+  .sec-t {
+    font-size: clamp(23px, 3.2vw, 32px);
+    letter-spacing: -0.028em;
+    font-weight: 640;
+    margin: 0 0 12px;
+    line-height: 1.18;
+  }
+  .sec-s {
+    color: var(--color-muted);
+    max-width: 640px;
+    margin: 0 0 32px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* problems */
+  .prob {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: 16px 18px;
+    background: var(--color-bg);
+  }
+  .prob-badge {
+    flex-shrink: 0;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 99px;
+    background: color-mix(in srgb, var(--color-bad) 10%, transparent);
+    color: var(--color-bad);
+    margin-top: 2px;
+  }
+  .prob-title { font-size: 14.5px; font-weight: 600; line-height: 1.35; }
+  .prob-text {
+    margin: 4px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-muted);
+  }
+
+  /* case */
+  .case {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+  .case-top {
+    padding: 24px 26px 20px;
+    border-bottom: 1px solid var(--color-line);
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .case-title {
+    font-size: 21px;
+    font-weight: 640;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
+  }
+  .case-d { color: var(--color-muted); font-size: 14px; margin: 0; }
+  .case-badge {
+    font-size: 12px;
+    padding: 5px 11px;
+    border-radius: 99px;
+    background: color-mix(in srgb, var(--color-accent) 9%, transparent);
+    color: var(--color-accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .case-body { padding: 22px 26px 26px; }
+
+  /* link */
+  .link-arrow {
+    display: inline-block;
+    font-size: 14.5px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-accent);
+    margin-top: 4px;
+  }
+  .link-arrow:hover { text-decoration: underline; }
+
+  /* band */
+  .band {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl);
+    padding: 38px 30px;
+    background: linear-gradient(135deg, var(--color-card), var(--color-bg));
+    text-align: center;
+  }
+  .band h2 {
+    font-size: clamp(20px, 2.8vw, 27px);
+    letter-spacing: -0.025em;
+    margin: 0 0 10px;
+    font-weight: 640;
+  }
+  .band p {
+    color: var(--color-muted);
+    margin: 0 auto 22px;
+    max-width: 480px;
+    font-size: 15px;
+  }
+</style>

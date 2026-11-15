@@ -1,0 +1,504 @@
+{
+ "run_id": 1,
+ "count": 38,
+ "fetched": "2026-11-15 00:33",
+ "keywords": [
+  {
+   "cluster": "коммерческие — общие",
+   "phrase": "horse riding karakol",
+   "intent": "commercial",
+   "target": "/",
+   "suggest": [
+    "horse riding karakol",
+    "horse riding karakol valley",
+    "horse trekking karakol",
+    "horse riding tour karakol",
+    "one day horse riding karakol",
+    "karakol horse riding 1 day",
+    "mustang-horse tour horse riding karakol",
+    "horse riding karakol"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — общие",
+   "phrase": "horseback riding karakol",
+   "intent": "commercial",
+   "target": "/",
+   "suggest": [
+    "karakol horseback riding",
+    "horse riding karakol valley",
+    "horse riding tour karakol",
+    "horse riding near karakol",
+    "horseback riding experience levels",
+    "horseback riding workout routine",
+    "what muscles does horseback riding work",
+    "horseback riding description"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — общие",
+   "phrase": "horseback riding tours kyrgyzstan",
+   "intent": "commercial",
+   "target": "/",
+   "suggest": [
+    "horseback riding tours kyrgyzstan",
+    "kyrgyzstan horse riding trips",
+    "best horse riding tours kyrgyzstan",
+    "3 day horse riding tour kyrgyzstan",
+    "horseback riding tours kyrgyzstan"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — общие",
+   "phrase": "конные туры каракол",
+   "intent": "commercial",
+   "target": "/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — общие",
+   "phrase": "конные прогулки каракол",
+   "intent": "commercial",
+   "target": "/",
+   "suggest": [
+    "конные прогулки каракол",
+    "конные прогулки каракол"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — общие",
+   "phrase": "верхом на лошади каракол",
+   "intent": "commercial",
+   "target": "/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "horse riding tour karakol kyrgyzstan",
+   "intent": "commercial",
+   "target": "/our-tours/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "kyrgyzstan horseback tour 3 days",
+   "intent": "commercial",
+   "target": "/our-tours/",
+   "suggest": [
+    "kyrgyzstan horse tour 3 days",
+    "how many days in greece is enough",
+    "4 days in greece what to do"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "horse riding tour ala kol lake",
+   "intent": "commercial",
+   "target": "/4-day-horseback-riding-tour-program/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "horse riding ala kul",
+   "intent": "commercial",
+   "target": "/4-day-horseback-riding-tour-program/",
+   "suggest": [
+    "ala-kul lake horse riding",
+    "horse riding ala kul",
+    "ala-kul lake horse riding",
+    "horse riding ala kul"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "horseback riding ala-kul lake tour",
+   "intent": "commercial",
+   "target": "/4-day-horseback-riding-tour-program/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "horseback riding tour kyrgyzstan price",
+   "intent": "commercial",
+   "target": "/our-tours/",
+   "suggest": [
+    "horseback riding kyrgyzstan price",
+    "kyrgyzstan horse riding tour price",
+    "how much does horse riding cost",
+    "is horse riding expensive",
+    "how much is horse riding in the uk",
+    "how much does horseback riding cost per year",
+    "how much is horse riding school",
+    "horseback riding kyrgyzstan price"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "horse riding tour kyrgyzstan price",
+   "intent": "commercial",
+   "target": "/our-tours/",
+   "suggest": [
+    "horse riding kyrgyzstan price",
+    "kyrgyzstan horse riding tour price",
+    "how much does horse riding cost",
+    "is horse riding expensive",
+    "how much is horse riding in the uk",
+    "how much is horse riding school",
+    "how much does it cost to learn horse riding in india",
+    "horse riding kyrgyzstan price"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "one day horse riding tour karakol gorge",
+   "intent": "commercial",
+   "target": "/1-day-horseback-riding-tour-in-karakol-gorge/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "horse riding tour karakol gorge",
+   "intent": "commercial",
+   "target": "/1-day-horseback-riding-tour-in-karakol-gorge/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "two day horse riding tour altyn arashan",
+   "intent": "commercial",
+   "target": "/2-day-horseback-riding-itinerary-altyn-arashan/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "horse riding tour altyn arashan",
+   "intent": "commercial",
+   "target": "/2-day-horseback-riding-itinerary-altyn-arashan/",
+   "suggest": [
+    "horse riding altyn arashan",
+    "altyn arashan horse riding tour",
+    "how to get horse riding insurance",
+    "horseback riding trail tours near me",
+    "vacations that include horseback riding",
+    "horse riding altyn arashan",
+    "altyn arashan horse riding tour"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — туры",
+   "phrase": "five day horse riding tour kyrgyzstan",
+   "intent": "commercial",
+   "target": "/5-day-horseback-riding-tour-program/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — размещение",
+   "phrase": "guesthouse karakol",
+   "intent": "commercial",
+   "target": "/guesthouse-and-yurt-camp/",
+   "suggest": [
+    "guesthouse karakol",
+    "riverside guesthouse karakol",
+    "evergreen guesthouse karakol",
+    "teskey guesthouse karakol",
+    "matsunoki guesthouse karakol",
+    "guesthouse erkin karakol",
+    "agro guest house karakol",
+    "merino guest house karakol"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — размещение",
+   "phrase": "yurt camp karakol",
+   "intent": "commercial",
+   "target": "/guesthouse-and-yurt-camp/",
+   "suggest": [
+    "yurt camp karakol",
+    "yurt camp karakol gorge",
+    "arista yurt camp karakol",
+    "komay yurt camp karakol",
+    "happy nomads yurt camp karakol",
+    "what is yurt camping",
+    "yurt camp karakol",
+    "yurt camp karakol gorge"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — размещение",
+   "phrase": "yurt stay karakol kyrgyzstan",
+   "intent": "commercial",
+   "target": "/guesthouse-and-yurt-camp/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — размещение",
+   "phrase": "karakol hostel",
+   "intent": "commercial",
+   "target": "/guesthouse-and-yurt-camp/",
+   "suggest": [
+    "karakol hostel",
+    "karakol hostelworld",
+    "karakol hostel reddit",
+    "karakol based hostel",
+    "karakol duet hostel",
+    "kbh karakol hostel",
+    "nice hostel karakol",
+    "interhouse hostel karakol"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — трансфер",
+   "phrase": "airport pickup karakol",
+   "intent": "commercial",
+   "target": "/airport-pickup/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — трансфер",
+   "phrase": "airport transfer karakol from bishkek",
+   "intent": "commercial",
+   "target": "/airport-pickup/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "коммерческие — трансфер",
+   "phrase": "transfer tamchy to karakol",
+   "intent": "commercial",
+   "target": "/airport-pickup/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "информационные",
+   "phrase": "things to do in karakol",
+   "intent": "informational",
+   "target": "/blog/",
+   "suggest": [
+    "things to do in karakol",
+    "things to do in karakol city",
+    "things to do in karakol kyrgyzstan",
+    "things to see in karakol",
+    "best things to do in karakol",
+    "best things to do in karakol kyrgyzstan",
+    "things to do around karakol",
+    "things to do in karakol"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "информационные",
+   "phrase": "karakol horse riding",
+   "intent": "informational",
+   "target": "/blog/",
+   "suggest": [
+    "karakol horse riding",
+    "karakol horse riding tour",
+    "karakol horse riding 1 day",
+    "karakol horse trekking",
+    "karakol valley horse riding",
+    "karakol kyrgyzstan horse riding",
+    "park karakol horse riding",
+    "karakol gorge horse riding"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "информационные",
+   "phrase": "altyn arashan hot springs",
+   "intent": "informational",
+   "target": "/blog/",
+   "suggest": [
+    "altyn arashan hot springs",
+    "altyn arashan hot springs price",
+    "altyn arashan hot springs hike",
+    "altyn arashan hot springs kyrgyzstan",
+    "altyn arashan hot springs location",
+    "altyn arashan valley & hot springs",
+    "natural hot springs altyn arashan",
+    "altyn arashan gorge hot springs"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "информационные",
+   "phrase": "ala kul lake trek",
+   "intent": "informational",
+   "target": "/blog/",
+   "suggest": [
+    "ala kul lake trek",
+    "ala kul lake trek map",
+    "ala kul lake trek 3 days",
+    "ala kul lake trekking",
+    "ala kul lake trek tour",
+    "ala kul lake trek difficulty",
+    "ala kul lake trek kyrgyzstan",
+    "ala kul lake trek 2 days"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "информационные",
+   "phrase": "karakol gorge hike",
+   "intent": "informational",
+   "target": "/blog/",
+   "suggest": [
+    "karakol gorge hike",
+    "karakol gorge trek",
+    "karakol gorge day hike",
+    "partnach gorge hike how long",
+    "gorge trail near me",
+    "how long does it take to hike to the top of pikes peak",
+    "karakol gorge hike",
+    "karakol gorge day hike"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "информационные",
+   "phrase": "best time to visit karakol",
+   "intent": "informational",
+   "target": "/blog/",
+   "suggest": [
+    "best time to visit karakol",
+    "guadalupe peak weather by month",
+    "is klaipeda worth visiting",
+    "peak season in kedarnath",
+    "best time to visit karakol"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "информационные",
+   "phrase": "kyrgyzstan horse riding experience",
+   "intent": "informational",
+   "target": "/blog/",
+   "suggest": [
+    "kyrgyzstan horse riding experience",
+    "horse riding experience levels",
+    "horse riding holidays in kyrgyzstan",
+    "horse riding work experience near me",
+    "kyrgyzstan horse riding experience"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "информационные",
+   "phrase": "horseback riding season kyrgyzstan",
+   "intent": "informational",
+   "target": "/blog/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "бренд",
+   "phrase": "argymaq",
+   "intent": "brand",
+   "target": "/",
+   "suggest": [
+    "argymaq",
+    "argymaq kz",
+    "argymaq almaty",
+    "argymaq галстук",
+    "argymaq group",
+    "argymaq management group",
+    "agrimaq tumor",
+    "argymaq auto"
+   ],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "бренд",
+   "phrase": "argymaq kyrgyzstan",
+   "intent": "brand",
+   "target": "/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "бренд",
+   "phrase": "аргимак каракол",
+   "intent": "brand",
+   "target": "/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "бренд",
+   "phrase": "argymaq horseback",
+   "intent": "brand",
+   "target": "/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  },
+  {
+   "cluster": "бренд",
+   "phrase": "argymaq tours",
+   "intent": "brand",
+   "target": "/",
+   "suggest": [],
+   "volume": null,
+   "note": "объём подтвердить в Wordstat/GKP"
+  }
+ ]
+}

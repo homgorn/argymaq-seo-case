@@ -1,0 +1,37 @@
+{
+  "brand": {
+    "name": "Digital Growth KG",
+    "nameShort": "DG",
+    "tagline": "Продвижение для бизнеса в Кыргызстане",
+    "description": "Приводим клиентов из поиска, соцсетей и нейросетей. С понятными цифрами: сколько было и сколько стало.",
+    "url": "https://digitalgrowth.kg",
+    "founded": "2026"
+  },
+  "contacts": {
+    "whatsapp": "+996 555 707 267",
+    "whatsappLink": "https://wa.me/996555707267",
+    "email": "refertur@yandex.ru",
+    "telegram": "@realhikaz",
+    "telegramLink": "https://t.me/realhikaz",
+    "hours": "Пн–Сб, 09:00–20:00 (Бишкек)",
+    "address": "Кыргызстан, работаем по всей стране удалённо"
+  },
+  "nav": [
+    { "label": "Кейс", "href": "/kase/argymaq-kg/" },
+    { "label": "Услуги", "href": "/uslugi/" },
+    { "label": "Цены", "href": "/ceny/" },
+    { "label": "Как работаем", "href": "/kak-rabotaem/" },
+    { "label": "О нас", "href": "/about/" }
+  ],
+  "social": [
+    { "label": "WhatsApp", "href": "https://wa.me/996555707267" },
+    { "label": "Telegram", "href": "https://t.me/realhikaz" },
+    { "label": "Email", "href": "mailto:refertur@yandex.ru" }
+  ],
+  "legal": {
+    "entity": "",
+    "inn": "",
+    "address": "",
+    "note": "Реквизиты уточняются у владельца"
+  }
+}

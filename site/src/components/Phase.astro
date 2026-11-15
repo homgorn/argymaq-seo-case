@@ -1,0 +1,75 @@
+---
+interface Props {
+  title: string;
+  text: string;
+  result?: string;
+  status?: 'done' | 'current' | 'waiting';
+  n?: number | string;
+}
+
+const { title, text, result, status = 'current', n } = Astro.props;
+---
+
+<div
+  class="reveal relative rounded-[var(--radius-lg)] border p-[18px]"
+  class:list={[
+    status === 'done' && 'phase-done',
+    status === 'current' && 'phase-current',
+    status === 'waiting' && 'phase-waiting',
+  ]}
+>
+  <div class="phase-label">
+    {n ? `ФАЗА ${n}` : title}
+  </div>
+  {n && <div class="phase-title">{title}</div>}
+  <p class="phase-text">{text}</p>
+  {result && <div class="phase-result">{result}</div>}
+</div>
+
+<style>
+  .phase-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    color: var(--color-muted);
+  }
+  .phase-title {
+    font-size: 15.5px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .phase-text {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--color-muted);
+  }
+  .phase-result {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--color-line);
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+
+  .phase-done {
+    border-color: color-mix(in srgb, var(--color-ok) 32%, transparent);
+    background: color-mix(in srgb, var(--color-ok) 3.5%, var(--color-bg));
+  }
+  .phase-done .phase-label,
+  .phase-done .phase-result { color: var(--color-ok); }
+
+  .phase-current {
+    border-color: color-mix(in srgb, var(--color-accent) 36%, transparent);
+    background: color-mix(in srgb, var(--color-accent) 3.5%, var(--color-bg));
+  }
+  .phase-current .phase-label,
+  .phase-current .phase-result { color: var(--color-accent); }
+
+  .phase-waiting {
+    opacity: 0.66;
+    border-style: dashed;
+  }
+  .phase-waiting .phase-label { color: var(--color-muted); }
+</style>

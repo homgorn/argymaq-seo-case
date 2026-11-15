@@ -1,0 +1,93 @@
+---
+interface Props {
+  label: string;
+  explain?: string;
+  before: number | string;
+  beforeUnit?: string;
+  after?: number | string | null;
+  afterUnit?: string;
+  target?: number | string | null;
+  targetUnit?: string;
+  status?: 'pending' | 'done' | 'planned';
+}
+
+const {
+  label,
+  explain,
+  before,
+  beforeUnit = '',
+  after = null,
+  afterUnit = '',
+  target = null,
+  targetUnit = '',
+  status = 'pending',
+} = Astro.props;
+
+const hasAfter = after !== null && after !== undefined;
+---
+
+<div class="reveal rounded-[var(--radius-xl)] border p-5" style="border-color: var(--color-line); background: var(--color-card);">
+  <div class="flex items-start justify-between gap-3">
+    <div>
+      <div class="text-[14.5px] font-semibold leading-snug">{label}</div>
+      {explain && (
+        <p class="mt-1 text-[13px] leading-relaxed" style="color: var(--color-muted);">
+          {explain}
+        </p>
+      )}
+    </div>
+    {status === 'done' && (
+      <span class="badge badge-ok">готово</span>
+    )}
+    {status === 'pending' && (
+      <span class="badge badge-warn">в работе</span>
+    )}
+  </div>
+
+  <div class="mt-4 flex items-end gap-3">
+    <div>
+      <div class="text-[10.5px] uppercase tracking-[.09em] font-semibold" style="color: var(--color-bad);">
+        было
+      </div>
+      <div class="tnum text-[26px] font-bold leading-none" style="color: var(--color-bad);">
+        {before}<span class="text-[13px] font-medium ml-1">{beforeUnit}</span>
+      </div>
+    </div>
+
+    <div class="pb-2 text-[18px]" style="color: var(--color-muted);" aria-hidden="true">→</div>
+
+    <div>
+      <div class="text-[10.5px] uppercase tracking-[.09em] font-semibold" style="color: var(--color-muted);">
+        {hasAfter ? 'стало' : 'цель'}
+      </div>
+      {hasAfter ? (
+        <div class="tnum text-[26px] font-bold leading-none" style="color: var(--color-ok);">
+          {after}<span class="text-[13px] font-medium ml-1">{afterUnit}</span>
+        </div>
+      ) : (
+        <div class="tnum text-[26px] font-bold leading-none" style="color: var(--color-fg); opacity:.4;">
+          {target ?? '—'}<span class="text-[13px] font-medium ml-1">{targetUnit}</span>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
+<style>
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 99px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-ok {
+    background: color-mix(in srgb, var(--color-ok) 11%, transparent);
+    color: var(--color-ok);
+  }
+  .badge-warn {
+    background: color-mix(in srgb, var(--color-warn) 12%, transparent);
+    color: var(--color-warn);
+  }
+</style>

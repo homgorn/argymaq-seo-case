@@ -1,0 +1,58 @@
+name: Feature request
+description: Suggest an improvement to the site or the audit.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the improvement, then the problem it solves.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Report site (design, layout, content)
+        - Audit scripts
+        - Documentation / wiki
+        - New metric or check
+        - New market research
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does it solve?
+      description: Start with the problem, not the solution.
+      placeholder: |
+        The results page shows figures but a reader cannot tell whether a
+        number is measured or a target.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you change?
+      description: Be specific. If it affects the site, describe the section.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternative
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked that this is not already proposed.
+          required: true
+        - label: The change keeps the plain-language rule (no unexplained jargon).
+          required: true

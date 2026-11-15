@@ -1,0 +1,67 @@
+name: Bug report
+description: Report a wrong measurement, a broken page, or a factual error.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep this audit accurate.
+
+        **Do not report findings about argymaq.kg itself here** — that site is
+        the subject of the audit, not the project. Use the contact details in
+        `SECURITY.md` for anything sensitive.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem is it?
+      options:
+        - A figure is wrong
+        - A page does not build or render
+        - A link is broken
+        - A statement is misleading
+        - Something is missing
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: where
+    attributes:
+      label: Where?
+      description: Page URL or file path.
+      placeholder: docs/reports/seo-audit-2026-11-15.md, or /kase/argymaq-kg/result/
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong?
+      description: Quote the exact text or number, and say what it should be.
+      placeholder: |
+        In the report it says "54 images total 408 MB". The table below shows
+        54 files but the sum is 402 MB.
+    validations:
+      required: true
+
+  - type: textarea
+    id: how
+    attributes:
+      label: How did you verify it?
+      description: Command, tool, or measurement you ran. Required for figure corrections.
+      placeholder: |
+        python scripts/images_head.py
+        -> total 402.1 MB
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked that this is not already reported.
+          required: true
+        - label: I re-ran the relevant script and included its output (for figure corrections).
+          required: false

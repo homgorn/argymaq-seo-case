@@ -1,0 +1,208 @@
+---
+import Base from '../../layouts/Base.astro';
+import services from '../../data/services.json';
+import site from '../../data/site.json';
+
+export function getStaticPaths() {
+  return services.map((s) => ({
+    params: { slug: s.slug },
+    props: { service: s },
+  }));
+}
+
+const { service } = Astro.props;
+const fmt = new Intl.NumberFormat('ru-RU').format(service.priceFrom);
+
+const title = `${service.title} — Digital Growth KG`;
+const description =
+  `${service.lead} ${service.includes.length} пунктов работы, от ${fmt} ${service.priceUnit}. ` +
+  `Что входит, сроки и как заказать — на странице услуги.`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.title,
+  serviceType: service.title,
+  description: service.lead,
+  provider: {
+    '@type': 'Organization',
+    name: site.brand.name,
+    url: site.brand.url,
+  },
+  areaServed: 'KG',
+  offers: {
+    '@type': 'Offer',
+    price: service.priceFrom,
+    priceCurrency: 'KGS',
+    availability: 'https://schema.org/InStock',
+  },
+};
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <section class="wrap py-14 md:py-20">
+    <div class="mx-auto max-w-[820px]">
+      <nav class="text-[13px] mb-5" style="color: var(--color-muted);" aria-label="Хлебные крошки">
+        <a href="/" class="hover:text-[var(--color-fg)]" style="text-decoration:none;">Главная</a>
+        <span class="mx-1.5">/</span>
+        <a href="/uslugi/" class="hover:text-[var(--color-fg)]" style="text-decoration:none;">Услуги</a>
+        <span class="mx-1.5">/</span>
+        <span>{service.title}</span>
+      </nav>
+
+      <h1 class="text-[clamp(27px,4.2vw,40px)] font-[650] leading-[1.12] tracking-[-0.03em]">
+        {service.title}
+      </h1>
+      <p class="mt-4 text-[17px] leading-relaxed" style="color: var(--color-muted);">
+        {service.lead}
+      </p>
+
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        <div class="price-chip">
+          <span class="text-[11px] uppercase tracking-[.08em] font-semibold"
+                style="color: var(--color-muted);">от</span>
+          <span class="tnum text-[22px] font-bold">{fmt}</span>
+          <span class="text-[13px]" style="color: var(--color-muted);">{service.priceUnit}</span>
+        </div>
+        <a href="/kontakty/" class="btn btn-primary">Обсудить →</a>
+      </div>
+
+      <!-- Задача -->
+      <div class="mt-10 grid gap-3">
+        <div class="box box-bad">
+          <div class="box-tag" style="color: var(--color-bad);">Проблема</div>
+          <p class="box-text">{service.problem}</p>
+        </div>
+        <div class="box box-ok">
+          <div class="box-tag" style="color: var(--color-ok);">Что получите</div>
+          <p class="box-text">{service.outcome}</p>
+        </div>
+      </div>
+
+      <!-- Что входит -->
+      <h2 class="mt-11 text-[21px] font-[640] tracking-[-0.02em]">Что входит</h2>
+      <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+        {service.includes.map((item) => (
+          <li class="inc">
+            <span class="inc-t" aria-hidden="true">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Кому и сроки -->
+      <div class="mt-10 grid gap-3 sm:grid-cols-2">
+        <div class="box">
+          <div class="box-tag" style="color: var(--color-muted);">Кому подходит</div>
+          <p class="box-text">{service.forWhom}</p>
+        </div>
+        <div class="box">
+          <div class="box-tag" style="color: var(--color-muted);">Когда ждать результат</div>
+          <p class="box-text">{service.term}</p>
+        </div>
+      </div>
+
+      <div class="band mt-11">
+        <h2>Хотите так же?</h2>
+        <p>Начнём с бесплатного аудита: покажем, что мешает именно вам.</p>
+        <div class="flex flex-wrap justify-center gap-2.5">
+          <a href={site.contacts.whatsappLink} target="_blank" rel="noopener" class="btn btn-primary">
+            WhatsApp →
+          </a>
+          <a href="/ceny/" class="btn">Смотреть цены</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .price-chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    background: var(--color-card);
+  }
+  .box {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    background: var(--color-bg);
+  }
+  .box-bad {
+    background: color-mix(in srgb, var(--color-bad) 2.5%, var(--color-bg));
+    border-color: color-mix(in srgb, var(--color-bad) 20%, transparent);
+  }
+  .box-ok {
+    background: color-mix(in srgb, var(--color-ok) 3%, var(--color-bg));
+    border-color: color-mix(in srgb, var(--color-ok) 24%, transparent);
+  }
+  .box-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-weight: 650;
+    margin-bottom: 7px;
+  }
+  .box-text {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .inc {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 7px 0;
+    list-style: none;
+  }
+  .inc-t {
+    color: var(--color-ok);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .band {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl);
+    padding: 32px 28px;
+    background: linear-gradient(135deg, var(--color-card), var(--color-bg));
+    text-align: center;
+  }
+  .band h2 {
+    font-size: clamp(19px, 2.6vw, 24px);
+    letter-spacing: -0.022em;
+    margin: 0 0 8px;
+    font-weight: 640;
+  }
+  .band p {
+    color: var(--color-muted);
+    margin: 0 auto 20px;
+    max-width: 420px;
+    font-size: 14.5px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 20px;
+    border-radius: var(--radius-lg);
+    font-size: 14.5px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    transition: all 0.16s ease;
+  }
+  .btn:hover { border-color: var(--color-muted); transform: translateY(-1px); }
+  .btn-primary {
+    background: var(--color-fg);
+    color: #fff;
+    border-color: var(--color-fg);
+  }
+  .btn-primary:hover { opacity: 0.88; }
+</style>

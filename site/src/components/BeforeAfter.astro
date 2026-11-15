@@ -1,0 +1,90 @@
+---
+interface Props {
+  before: { label: string; value: string }[];
+  after: { label: string; value: string }[];
+  beforeTitle?: string;
+  afterTitle?: string;
+}
+
+const {
+  before,
+  after,
+  beforeTitle = 'Было',
+  afterTitle = 'Стало',
+} = Astro.props;
+---
+
+<div class="grid gap-3.5 md:grid-cols-2">
+  <div class="rounded-[var(--radius-xl)] border p-5 ba-before">
+    <div class="ba-tag">
+      <span class="dot" aria-hidden="true"></span> {beforeTitle}
+    </div>
+    {before.map((row) => (
+      <div class="ba-row">
+        <span class="k">{row.label}</span>
+        <span class="v">{row.value}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="rounded-[var(--radius-xl)] border p-5 ba-after">
+    <div class="ba-tag">
+      <span class="dot" aria-hidden="true"></span> {afterTitle}
+    </div>
+    {after.map((row) => (
+      <div class="ba-row">
+        <span class="k">{row.label}</span>
+        <span class="v">{row.value}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .ba-before {
+    background: color-mix(in srgb, var(--color-bad) 2.5%, var(--color-bg));
+    border-color: color-mix(in srgb, var(--color-bad) 22%, transparent);
+  }
+  .ba-after {
+    background: color-mix(in srgb, var(--color-ok) 3%, var(--color-bg));
+    border-color: color-mix(in srgb, var(--color-ok) 26%, transparent);
+  }
+  .ba-tag {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 650;
+    margin-bottom: 12px;
+  }
+  .ba-before .ba-tag { color: var(--color-bad); }
+  .ba-after  .ba-tag { color: var(--color-ok); }
+
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor;
+    display: block;
+  }
+
+  .ba-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--color-line);
+    font-size: 13.5px;
+    line-height: 1.4;
+  }
+  .ba-row:last-child { border-bottom: 0; }
+  .ba-row .k { color: var(--color-muted); }
+  .ba-row .v {
+    font-weight: 600;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .ba-before .v { color: var(--color-bad); }
+  .ba-after  .v { color: var(--color-ok); }
+</style>

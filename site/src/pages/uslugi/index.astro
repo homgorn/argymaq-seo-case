@@ -1,0 +1,115 @@
+---
+import Base from '../../layouts/Base.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import services from '../../data/services.json';
+import site from '../../data/site.json';
+
+const title = 'Услуги — Digital Growth KG';
+const description =
+  'Шесть направлений для бизнеса в Кыргызстане: SEO и продвижение в поиске, продвижение в нейросетях, ' +
+  'карты Яндекс и 2GIS, SMM, сайты под ключ и реклама. Цены в сомах, от 15 000 в месяц.';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Услуги Digital Growth KG',
+  itemListElement: services.map((s, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Service',
+      name: s.title,
+      description: s.lead,
+      url: `${site.brand.url}/uslugi/${s.slug}/`,
+    },
+  })),
+};
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <section class="wrap py-14 md:py-20">
+    <div class="mx-auto max-w-[900px]">
+      <div class="sec-h">Услуги</div>
+      <h1 class="text-[clamp(28px,4.4vw,42px)] font-[650] leading-[1.1] tracking-[-0.03em]">
+        Что мы <span class="grad">делаем</span>
+      </h1>
+      <p class="mt-4 max-w-[600px] text-[16px] leading-relaxed" style="color: var(--color-muted);">
+        Шесть направлений. Можно взять одно, можно всё сразу.
+        В каждом — понятный результат и отчёт цифрами.
+      </p>
+
+      <div class="mt-10 grid gap-3 sm:grid-cols-2">
+        {services.map((s) => (
+          <ServiceCard
+            icon={s.icon}
+            title={s.title}
+            lead={s.lead}
+            outcome={s.outcome}
+            priceFrom={s.priceFrom}
+            priceUnit={s.priceUnit}
+            href={`/uslugi/${s.slug}/`}
+          />
+        ))}
+      </div>
+
+      <div class="band mt-12">
+        <h2>Не знаете, с чего начать?</h2>
+        <p>Бесплатный экспресс-аудит: покажем 3 проблемы, которые мешают получать заявки.</p>
+        <div class="flex flex-wrap justify-center gap-2.5">
+          <a href="/kontakty/" class="btn btn-primary">Оставить заявку →</a>
+          <a href="/kase/argymaq-kg/" class="btn">Посмотреть кейс</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .sec-h {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    color: var(--color-muted);
+    font-weight: 650;
+    margin-bottom: 12px;
+  }
+  .band {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl);
+    padding: 32px 28px;
+    background: linear-gradient(135deg, var(--color-card), var(--color-bg));
+    text-align: center;
+  }
+  .band h2 {
+    font-size: clamp(19px, 2.6vw, 24px);
+    letter-spacing: -0.022em;
+    margin: 0 0 8px;
+    font-weight: 640;
+  }
+  .band p {
+    color: var(--color-muted);
+    margin: 0 auto 20px;
+    max-width: 420px;
+    font-size: 14.5px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 20px;
+    border-radius: var(--radius-lg);
+    font-size: 14.5px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    transition: all 0.16s ease;
+  }
+  .btn:hover { border-color: var(--color-muted); transform: translateY(-1px); }
+  .btn-primary {
+    background: var(--color-fg);
+    color: #fff;
+    border-color: var(--color-fg);
+  }
+  .btn-primary:hover { opacity: 0.88; }
+</style>
