@@ -1,10 +1,10 @@
 {
   "brand": {
-    "name": "Digital Growth KG",
-    "nameShort": "DG",
-    "tagline": "Продвижение для бизнеса в Кыргызстане",
-    "description": "Приводим клиентов из поиска, соцсетей и нейросетей. С понятными цифрами: сколько было и сколько стало.",
-    "url": "https://digitalgrowth.kg",
+    "name": "Refertur.net",
+    "nameShort": "R",
+    "tagline": "Приводим клиентов из поиска, соцсетей и нейросетей",
+    "description": "SEO, реклама, карты и сайты под ключ для бизнеса в Кыргызстане. Показываем не «мы поработали», а сколько было и сколько стало.",
+    "url": "https://homgorn.github.io/argymaq-seo-case",
     "founded": "2026"
   },
   "contacts": {
@@ -14,7 +14,10 @@
     "telegram": "@realhikaz",
     "telegramLink": "https://t.me/realhikaz",
     "hours": "Пн–Сб, 09:00–20:00 (Бишкек)",
-    "address": "Кыргызстан, работаем по всей стране удалённо"
+    "address": "ТЦ «Азия Молл», Бишкек, Кыргызстан",
+    "mapGoogle": "https://www.google.com/maps/search/%D0%A2%D0%A6+%D0%90%D0%B7%D0%B8%D1%8F+%D0%9C%D0%BE%D0%BB%D0%BB+%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA",
+    "map2gis": "https://2gis.kg/bishkek/search/%D0%A2%D0%A6%20%D0%90%D0%B7%D0%B8%D1%8F%20%D0%9C%D0%BE%D0%BB%D0%BB",
+    "mapYandex": "https://yandex.kg/maps/?text=%D0%A2%D0%A6+%D0%90%D0%B7%D0%B8%D1%8F+%D0%9C%D0%BE%D0%BB%D0%BB+%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA"
   },
   "nav": [
     { "label": "Кейс", "href": "/kase/argymaq-kg/" },
@@ -31,7 +34,7 @@
   "legal": {
     "entity": "",
     "inn": "",
-    "address": "",
+    "address": "ТЦ «Азия Молл», Бишкек",
     "note": "Реквизиты уточняются у владельца"
   }
 }

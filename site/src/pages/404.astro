@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+
+const title = 'Страница не найдена — Refertur.net';
+const description = 'Такой страницы нет. Вот главные разделы: кейс с аудитом argymaq.kg, услуги, цены и контакты.';
+---
+
+<Base title={title} description={description}>
+  <section class="wrap py-20 md:py-28">
+    <div class="mx-auto max-w-[640px] text-center">
+      <div class="code">404</div>
+      <h1 class="text-[clamp(24px,3.6vw,34px)] font-[650] leading-[1.15] tracking-[-0.028em]">
+        Такой страницы нет
+      </h1>
+      <p class="mt-4 text-[16px] leading-relaxed" style="color: var(--color-muted);">
+        Возможно, вы перешли по ссылке со старого адреса. Вот что точно найдётся:
+      </p>
+
+      <div class="mt-8 grid gap-2.5">
+        <a href="/" class="notfound-link">Главная</a>
+        <a href="/kase/argymaq-kg/" class="notfound-link">Кейс: аудит argymaq.kg</a>
+        <a href="/uslugi/" class="notfound-link">Услуги</a>
+        <a href="/ceny/" class="notfound-link">Цены</a>
+        <a href="/kontakty/" class="notfound-link">Контакты</a>
+      </div>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-2.5">
+        <a href={site.contacts.whatsappLink} target="_blank" rel="noopener" class="btn btn-primary">
+          Написать в WhatsApp →
+        </a>
+        <a href={site.contacts.telegramLink} target="_blank" rel="noopener" class="btn">
+          Telegram @realhikaz
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .code {
+    font-size: clamp(54px, 9vw, 92px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(100deg, #1f7cec, #7c3aed 55%, #db2777);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 18px;
+  }
+  .notfound-link {
+    display: block;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: 13px 18px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-fg);
+    background: var(--color-bg);
+    transition: all 0.16s ease;
+  }
+  .notfound-link:hover {
+    border-color: var(--color-fg);
+    transform: translateY(-1px);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 20px;
+    border-radius: var(--radius-lg);
+    font-size: 14.5px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--color-line);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    transition: all 0.16s ease;
+  }
+  .btn:hover { border-color: var(--color-muted); transform: translateY(-1px); }
+  .btn-primary {
+    background: var(--color-fg);
+    color: #fff;
+    border-color: var(--color-fg);
+  }
+  .btn-primary:hover { opacity: 0.88; }
+</style>

@@ -13,7 +13,7 @@ export function getStaticPaths() {
 const { service } = Astro.props;
 const fmt = new Intl.NumberFormat('ru-RU').format(service.priceFrom);
 
-const title = `${service.title} — Digital Growth KG`;
+const title = `${service.title} — Refertur.net`;
 const description =
   `${service.lead} ${service.includes.length} пунктов работы, от ${fmt} ${service.priceUnit}. ` +
   `Что входит, сроки и как заказать — на странице услуги.`;

@@ -15,7 +15,7 @@ export default defineConfig({
     assets: '_astro',
     inlineStylesheets: 'auto',
   },
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !page.includes('/404') })],
   vite: {
     plugins: [tailwindcss()],
   },

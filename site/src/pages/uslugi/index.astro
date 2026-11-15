@@ -4,14 +4,14 @@ import ServiceCard from '../../components/ServiceCard.astro';
 import services from '../../data/services.json';
 import site from '../../data/site.json';
 
-const title = 'Услуги — Digital Growth KG';
+const title = 'Услуги — Refertur.net';
 const description =
   'Шесть направлений для бизнеса в Кыргызстане: SEO и продвижение в поиске, продвижение в нейросетях, ' +
   'карты Яндекс и 2GIS, SMM, сайты под ключ и реклама. Цены в сомах, от 15 000 в месяц.';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Услуги Digital Growth KG',
+  name: 'Услуги Refertur.net',
   itemListElement: services.map((s, i) => ({
     '@type': 'ListItem',
     position: i + 1,
