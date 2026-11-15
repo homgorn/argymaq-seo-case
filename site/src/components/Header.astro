@@ -17,27 +17,24 @@ const nav = [
   class="sticky top-0 z-50 border-b backdrop-blur-xl"
   style="background: color-mix(in srgb, var(--color-bg) 84%, transparent); border-color: var(--color-line);"
 >
-  <div class="wrap flex h-[54px] items-center justify-between gap-5">
-    <a href={`${base}/`} class="flex items-center gap-3" aria-label="argymaq.kg — аудит, к оглавлению">
+  <div class="wrap flex h-[52px] items-center gap-3 sm:h-[54px] sm:gap-5">
+    <a href={`${base}/`} class="flex shrink-0 items-center gap-2" aria-label="argymaq.kg — аудит, к оглавлению">
       <span
-        class="grid h-[22px] place-items-center rounded-md text-[11px] font-bold text-white"
-        style="background: var(--color-fg); padding-inline: 7px;"
+        class="grid h-[20px] place-items-center rounded-md text-[10px] font-bold text-white"
+        style="background: var(--color-fg); padding-inline: 6px;"
       >A</span>
-      <span class="text-[13px] font-semibold tracking-tight">
-        argymaq.kg
-        <span class="hidden text-[12px] font-normal sm:inline" style="color: var(--color-muted);"> — отчёт об аудите</span>
-      </span>
+      <span class="text-[13px] font-semibold tracking-tight whitespace-nowrap">argymaq.kg</span>
     </a>
 
-    <nav class="flex items-center gap-4 text-[13px] sm:gap-6" style="color: var(--color-muted);" aria-label="Разделы отчёта">
+    <nav class="flex min-w-0 items-center gap-2 overflow-x-auto text-[12px] sm:gap-6 sm:text-[13px]" style="color: var(--color-muted); scrollbar-width: none;" aria-label="Разделы отчёта">
       {nav.map((item) => {
         const active = current === item.href;
         return (
           <a
             href={item.href}
             aria-current={active ? 'page' : undefined}
-            class:list={['transition-colors hover:text-[var(--color-fg)]', active && 'nav-active']}
-            style="text-decoration:none;"
+            class:list={['shrink-0 transition-colors hover:text-[var(--color-fg)]', active && 'nav-active']}
+            style="text-decoration:none; white-space:nowrap;"
           >
             {item.label}
           </a>
@@ -45,13 +42,14 @@ const nav = [
       })}
     </nav>
 
-    <button type="button" class="print-btn" onclick="window.print()" aria-label="Распечатать отчёт">
-      <span aria-hidden="true">🖨</span> Печать
+    <button type="button" class="print-btn ml-auto shrink-0" onclick="window.print()" aria-label="Распечатать отчёт">
+      <span aria-hidden="true">🖨</span><span class="hidden sm:inline">Печать</span>
     </button>
   </div>
 </header>
 
 <style>
+  nav::-webkit-scrollbar { display: none; }
   .nav-active {
     color: var(--color-fg);
     font-weight: 600;
@@ -62,7 +60,7 @@ const nav = [
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 12px;
+    padding: 6px 8px;
     border: 1px solid var(--color-line);
     border-radius: var(--radius-lg);
     background: var(--color-bg);
@@ -74,6 +72,7 @@ const nav = [
     white-space: nowrap;
   }
   .print-btn:hover { border-color: var(--color-muted); transform: translateY(-1px); }
+  @media (min-width: 640px) { .print-btn { padding: 6px 12px; } }
 
   @media print {
     .print-btn { display: none; }
