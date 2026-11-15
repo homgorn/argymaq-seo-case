@@ -27,15 +27,16 @@ const jsonLd = {
   description,
   about: { '@type': 'Organization', name: caseData.client, url: caseData.clientUrl },
 };
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base title={title} description={description} jsonLd={jsonLd}>
   <section class="wrap py-14 md:py-20">
     <div class="mx-auto max-w-[880px]">
       <nav class="text-[13px] mb-5" style="color: var(--color-muted);" aria-label="Хлебные крошки">
-        <a href="/" style="text-decoration:none;">Главная</a>
+        <a href={`${base}/`} style="text-decoration:none;">Главная</a>
         <span class="mx-1.5">/</span>
-        <a href="/" style="text-decoration:none;">Кейс</a>
+        <a href={`${base}/`} style="text-decoration:none;">Кейс</a>
         <span class="mx-1.5">/</span>
         <span>Аудит</span>
       </nav>
@@ -104,8 +105,8 @@ const jsonLd = {
       })}
 
       <div class="mt-11 flex flex-wrap gap-2.5">
-        <a href="/plan/" class="btn btn-primary">План исправлений →</a>
-        <a href="/" class="btn">К оглавлению отчёта</a>
+        <a href={`${base}/plan/`} class="btn btn-primary">План исправлений →</a>
+        <a href={`${base}/`} class="btn">К оглавлению отчёта</a>
       </div>
     </div>
   </section>

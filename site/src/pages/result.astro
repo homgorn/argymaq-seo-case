@@ -22,15 +22,16 @@ const median = (a: number[]) => {
   const s = [...a].sort((x, y) => x - y);
   return s[Math.floor(s.length / 2)];
 };
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base title={title} description={description} jsonLd={jsonLd}>
   <section class="wrap py-14 md:py-20">
     <div class="mx-auto max-w-[880px]">
       <nav class="text-[13px] mb-5" style="color: var(--color-muted);" aria-label="Хлебные крошки">
-        <a href="/" style="text-decoration:none;">Главная</a>
+        <a href={`${base}/`} style="text-decoration:none;">Главная</a>
         <span class="mx-1.5">/</span>
-        <a href="/" style="text-decoration:none;">Кейс</a>
+        <a href={`${base}/`} style="text-decoration:none;">Кейс</a>
         <span class="mx-1.5">/</span>
         <span>Результат</span>
       </nav>
@@ -135,8 +136,8 @@ const median = (a: number[]) => {
       </p>
 
       <div class="mt-11 flex flex-wrap gap-2.5">
-        <a href="/" class="btn btn-primary">К оглавлению отчёта →</a>
-        <a href="/audit/" class="btn">Что нашли</a>
+        <a href={`${base}/`} class="btn btn-primary">К оглавлению отчёта →</a>
+        <a href={`${base}/audit/`} class="btn">Что нашли</a>
       </div>
     </div>
   </section>

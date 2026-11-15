@@ -1,11 +1,13 @@
 ---
 import site from '../data/case/argymaq.json';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const link = (p) => `${base}${p}`;
 const nav = [
-  { label: 'Аудит', href: '/audit/' },
-  { label: 'План', href: '/plan/' },
-  { label: 'Что сделали', href: '/work/' },
-  { label: 'Результат', href: '/result/' },
+  { label: 'Аудит', href: link('/audit/') },
+  { label: 'План', href: link('/plan/') },
+  { label: 'Что сделали', href: link('/work/') },
+  { label: 'Результат', href: link('/result/') },
 ];
 ---
 

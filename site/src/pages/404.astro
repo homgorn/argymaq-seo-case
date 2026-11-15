@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 const title = 'Страница не найдена — argymaq.kg аудит';
 const description =
   'Такой страницы нет. Вот разделы отчёта: аудит, план работ, что сделано и цифры результата.';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base title={title} description={description}>
@@ -19,11 +20,11 @@ const description =
       </p>
 
       <div class="mt-8 grid gap-2.5">
-        <a href="/" class="notfound-link">Оглавление отчёта</a>
-        <a href="/audit/" class="notfound-link">Аудит — что нашли</a>
-        <a href="/plan/" class="notfound-link">План работ</a>
-        <a href="/work/" class="notfound-link">Что сделали</a>
-        <a href="/result/" class="notfound-link">Результат — цифры</a>
+        <a href={`${base}/`} class="notfound-link">Оглавление отчёта</a>
+        <a href={`${base}/audit/`} class="notfound-link">Аудит — что нашли</a>
+        <a href={`${base}/plan/`} class="notfound-link">План работ</a>
+        <a href={`${base}/work/`} class="notfound-link">Что сделали</a>
+        <a href={`${base}/result/`} class="notfound-link">Результат — цифры</a>
       </div>
     </div>
   </section>

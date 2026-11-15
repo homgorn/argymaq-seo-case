@@ -1,11 +1,15 @@
 ---
 import site from '../data/case/argymaq.json';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const link = (p) => `${base}${p}`;
+const current = Astro.url.pathname;
+
 const nav = [
-  { label: 'Аудит', href: '/audit/' },
-  { label: 'План', href: '/plan/' },
-  { label: 'Что сделали', href: '/work/' },
-  { label: 'Результат', href: '/result/' },
+  { label: 'Аудит', href: link('/audit/') },
+  { label: 'План', href: link('/plan/') },
+  { label: 'Что сделали', href: link('/work/') },
+  { label: 'Результат', href: link('/result/') },
 ];
 ---
 
@@ -14,7 +18,7 @@ const nav = [
   style="background: color-mix(in srgb, var(--color-bg) 84%, transparent); border-color: var(--color-line);"
 >
   <div class="wrap flex h-[54px] items-center justify-between gap-5">
-    <a href="/" class="flex items-center gap-3" aria-label="argymaq.kg — аудит, к оглавлению">
+    <a href={`${base}/`} class="flex items-center gap-3" aria-label="argymaq.kg — аудит, к оглавлению">
       <span
         class="grid h-[22px] place-items-center rounded-md text-[11px] font-bold text-white"
         style="background: var(--color-fg); padding-inline: 7px;"
@@ -25,12 +29,53 @@ const nav = [
       </span>
     </a>
 
-    <nav class="flex items-center gap-4 text-[13px] sm:gap-6" style="color: var(--color-muted);">
-      {nav.map((item) => (
-        <a href={item.href} class="transition-colors hover:text-[var(--color-fg)]" style="text-decoration:none;">
-          {item.label}
-        </a>
-      ))}
+    <nav class="flex items-center gap-4 text-[13px] sm:gap-6" style="color: var(--color-muted);" aria-label="Разделы отчёта">
+      {nav.map((item) => {
+        const active = current === item.href;
+        return (
+          <a
+            href={item.href}
+            aria-current={active ? 'page' : undefined}
+            class:list={['transition-colors hover:text-[var(--color-fg)]', active && 'nav-active']}
+            style="text-decoration:none;"
+          >
+            {item.label}
+          </a>
+        );
+      })}
     </nav>
+
+    <button type="button" class="print-btn" onclick="window.print()" aria-label="Распечатать отчёт">
+      <span aria-hidden="true">🖨</span> Печать
+    </button>
   </div>
 </header>
+
+<style>
+  .nav-active {
+    color: var(--color-fg);
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-fg);
+    padding-bottom: 1px;
+  }
+  .print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.16s ease;
+    white-space: nowrap;
+  }
+  .print-btn:hover { border-color: var(--color-muted); transform: translateY(-1px); }
+
+  @media print {
+    .print-btn { display: none; }
+  }
+</style>

@@ -15,15 +15,16 @@ const jsonLd = {
   description,
   about: { '@type': 'Organization', name: 'ARGYMAQ KYRGYZSTAN' },
 };
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base title={title} description={description} jsonLd={jsonLd}>
   <section class="wrap py-14 md:py-20">
     <div class="mx-auto max-w-[880px]">
       <nav class="text-[13px] mb-5" style="color: var(--color-muted);" aria-label="Хлебные крошки">
-        <a href="/" style="text-decoration:none;">Главная</a>
+        <a href={`${base}/`} style="text-decoration:none;">Главная</a>
         <span class="mx-1.5">/</span>
-        <a href="/" style="text-decoration:none;">Кейс</a>
+        <a href={`${base}/`} style="text-decoration:none;">Кейс</a>
         <span class="mx-1.5">/</span>
         <span>План</span>
       </nav>
@@ -66,8 +67,8 @@ const jsonLd = {
         <h2>Что дальше</h2>
         <p>Следующий раздел — что уже исправлено и где виден результат.</p>
         <div class="flex flex-wrap justify-center gap-2.5">
-          <a href="/work/" class="btn btn-primary">Что сделано →</a>
-          <a href="/audit/" class="btn">Вернуться к аудиту</a>
+          <a href={`${base}/work/`} class="btn btn-primary">Что сделано →</a>
+          <a href={`${base}/audit/`} class="btn">Вернуться к аудиту</a>
         </div>
       </div>
     </div>

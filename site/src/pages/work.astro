@@ -29,15 +29,16 @@ const jsonLd = {
   description,
   about: { '@type': 'Organization', name: 'ARGYMAQ KYRGYZSTAN' },
 };
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base title={title} description={description} jsonLd={jsonLd}>
   <section class="wrap py-14 md:py-20">
     <div class="mx-auto max-w-[880px]">
       <nav class="text-[13px] mb-5" style="color: var(--color-muted);" aria-label="Хлебные крошки">
-        <a href="/" style="text-decoration:none;">Главная</a>
+        <a href={`${base}/`} style="text-decoration:none;">Главная</a>
         <span class="mx-1.5">/</span>
-        <a href="/" style="text-decoration:none;">Кейс</a>
+        <a href={`${base}/`} style="text-decoration:none;">Кейс</a>
         <span class="mx-1.5">/</span>
         <span>Внедрение</span>
       </nav>
@@ -107,8 +108,8 @@ const jsonLd = {
         <h2>Что дальше</h2>
         <p>Следующий раздел — цифры «до» и то, что появится после внедрения.</p>
         <div class="flex flex-wrap justify-center gap-2.5">
-          <a href="/result/" class="btn btn-primary">Смотреть результат →</a>
-          <a href="/plan/" class="btn">Вернуться к плану</a>
+          <a href={`${base}/result/`} class="btn btn-primary">Смотреть результат →</a>
+          <a href={`${base}/plan/`} class="btn">Вернуться к плану</a>
         </div>
       </div>
     </div>
