@@ -3,8 +3,7 @@ node_modules/
 .pnp
 .pnp.js
 
-# build output
-dist/
+# build output — site/dist IS published to GitHub Pages, so it stays tracked
 dist-ssr/
 .vercel/
 .netlify/
