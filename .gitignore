@@ -57,3 +57,5 @@ data/*.db-shm
 # screenshots
 *.png
 !site/public/*.png
+!docs/*.png
+!docs/**/*.png
