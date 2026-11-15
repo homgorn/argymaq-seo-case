@@ -3,7 +3,7 @@ node_modules/
 .pnp
 .pnp.js
 
-# build output — site/dist IS published to GitHub Pages, so it stays tracked
+# build output — site/dist and the published docs/ are tracked on purpose
 dist-ssr/
 .vercel/
 .netlify/
@@ -42,11 +42,17 @@ __pycache__/
 .venv/
 venv/
 
-# data (локальные замеры, не публикуем)
+# local audit artifacts — never published
 work/
 data/*.db
 data/*.db-wal
 data/*.db-shm
+
+# but the published site under docs/ is tracked, including its work/ route
+!docs/
+!docs/**
+!docs/**/work/
+!docs/**/work/**
 
 # screenshots
 *.png
